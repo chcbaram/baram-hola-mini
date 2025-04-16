@@ -20,3 +20,8 @@ uint32_t millis(void)
 {  
   return to_ms_since_boot(get_absolute_time());
 }
+
+uint32_t micros(void)
+{
+  return to_us_since_boot(get_absolute_time());
+}
