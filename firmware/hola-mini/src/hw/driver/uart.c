@@ -6,7 +6,9 @@
 #include "cli.h"
 #include "qbuffer.h"
 
-
+#ifdef _USE_HW_USB_CDC
+#include "tusb.h"
+#endif
 
 #define UART_RX_BUF_LENGTH      1024
 
@@ -59,6 +61,11 @@ bool uartOpen(uint8_t ch, uint32_t baud)
 {
   bool ret = false;
 
+
+  if (uart_tbl[ch].is_open && uart_tbl[ch].baud == baud)
+  {
+    return true;
+  }
 
   switch(ch)
   {
@@ -133,7 +140,9 @@ uint32_t uartAvailable(uint8_t ch)
   switch(ch)
   {
     case _DEF_UART1:
-      // ret = tud_cdc_available();
+      #ifdef _USE_HW_USB_CDC
+      ret = tud_cdc_available();
+      #endif
       break;
 
     case _DEF_UART2:
@@ -169,7 +178,9 @@ uint8_t uartRead(uint8_t ch)
   switch(ch)
   {
     case _DEF_UART1:
-      // ret = tud_cdc_read_char();
+      #ifdef _USE_HW_USB_CDC
+      ret = tud_cdc_read_char();
+      #endif
       break;
 
     case _DEF_UART2:
@@ -205,8 +216,10 @@ uint32_t uartWrite(uint8_t ch, uint8_t *p_data, uint32_t length)
   switch(ch)
   {
     case _DEF_UART1:
-      // ret = tud_cdc_write(p_data, length);
-      // tud_cdc_write_flush();
+      #ifdef _USE_HW_USB_CDC
+      ret = tud_cdc_write(p_data, length);
+      tud_cdc_write_flush();
+      #endif
       break;     
 
     case _DEF_UART2:

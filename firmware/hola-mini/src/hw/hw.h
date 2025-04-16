@@ -16,7 +16,7 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "eeprom.h"
-
+#include "ws2812.h"
 
 bool hwInit(void);
 

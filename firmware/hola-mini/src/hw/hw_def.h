@@ -12,7 +12,7 @@
 
 
 #define _USE_HW_EEPROM
-
+#define _USE_HW_USB_CDC
 
 #define _USE_HW_LED
 #define      HW_LED_MAX_CH          1
@@ -21,7 +21,7 @@
 #define      HW_UART_MAX_CH         2
 #define      HW_UART_CH_USB         _DEF_UART1
 #define      HW_UART_CH_DEBUG       _DEF_UART2
-#define      HW_UART_CH_CLI         HW_UART_CH_DEBUG
+#define      HW_UART_CH_CLI         HW_UART_CH_USB
 
 #define _USE_HW_CLI
 #define      HW_CLI_CMD_LIST_MAX    16
@@ -40,6 +40,10 @@
 
 #define _USE_HW_I2C
 #define      HW_I2C_MAX_CH          1
+
+#define _USE_HW_WS2812
+#define      HW_WS2812_MAX_CH       3
+
 
 //-- CLI
 //

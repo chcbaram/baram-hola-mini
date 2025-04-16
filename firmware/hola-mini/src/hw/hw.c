@@ -28,6 +28,7 @@ bool hwInit(void)
   ledInit();
   i2cInit();
   eepromInit();
+  ws2812Init();
   
   logBoot(false);
 
