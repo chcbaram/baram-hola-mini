@@ -27,7 +27,6 @@ void apMain(void)
       ledToggle(_DEF_LED1);      
     } 
     cliMain();     
-    usbHidUpdate();
   }
 }
 
@@ -36,6 +35,7 @@ void apMain2(void)
   while(1)
   {
     keysUpdate();
+    usbHidUpdate();
     delay(1);
   }
 }
