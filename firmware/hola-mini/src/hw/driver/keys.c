@@ -14,7 +14,6 @@
 #if CLI_USE(HW_KEYS)
 static void cliCmd(cli_args_t *args);
 #endif
-static void keysThread(void);
 static bool keysInitGpio(void);
 static void keysScan(void);
 
@@ -52,8 +51,6 @@ bool keysInit(void)
 
   keysInitGpio();
   keysScan();
-
-  multicore_launch_core1(keysThread);
 
 #if CLI_USE(HW_KEYS)
   cliAdd("keys", cliCmd);
@@ -99,6 +96,7 @@ bool keysIsReady(void)
 
 bool keysUpdate(void)
 {
+  keysScan();
   return true;
 }
 
@@ -158,15 +156,6 @@ void keysScan(void)
   is_ready = true;
 }
 
-void keysThread(void)
-{
-  while(1)
-  {
-    keysScan();
-    delay(1);
-  }
-}
-
 #if CLI_USE(HW_KEYS)
 void cliCmd(cli_args_t *args)
 {
@@ -181,7 +170,6 @@ void cliCmd(cli_args_t *args)
 
     while(cliKeepLoop())
     {
-      keysUpdate();
       delay(10);
 
       cliPrintf("     ");

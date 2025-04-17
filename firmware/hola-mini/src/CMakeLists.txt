@@ -26,6 +26,7 @@ target_include_directories(${PRJ_NAME} PUBLIC
   common/core
   common/hw/include 
   hw
+  hw/driver/usb
   lib
 )
 
@@ -37,9 +38,9 @@ target_link_libraries(${PRJ_NAME}
   hardware_i2c
   pico_multicore
   hardware_pio
-  # pico_unique_id
-  # tinyusb_device 
-  # tinyusb_board
+  pico_unique_id
+  tinyusb_device 
+  tinyusb_board
   )
 
 pico_add_extra_outputs(${PRJ_NAME})

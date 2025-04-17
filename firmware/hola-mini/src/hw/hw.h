@@ -18,7 +18,7 @@
 #include "eeprom.h"
 #include "ws2812.h"
 #include "keys.h"
-
+#include "usb.h"
 
 bool hwInit(void);
 

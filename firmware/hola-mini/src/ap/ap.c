@@ -1,7 +1,7 @@
 #include "ap.h"
 
 
-
+static void apMain2(void);
 
 
 
@@ -9,6 +9,8 @@
 void apInit(void)
 {
   cliOpen(HW_UART_CH_CLI, 115200);
+
+  multicore_launch_core1(apMain2);
 }
 
 void apMain(void)
@@ -26,3 +28,14 @@ void apMain(void)
     cliMain();     
   }
 }
+
+void apMain2(void)
+{
+  while(1)
+  {
+    keysUpdate();
+    usbHidUpdate();
+    delay(1);
+  }
+}
+

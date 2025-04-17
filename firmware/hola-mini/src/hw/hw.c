@@ -30,6 +30,7 @@ bool hwInit(void)
   eepromInit();
   ws2812Init();
   keysInit();
+  usbInit();
   
   logBoot(false);
 
