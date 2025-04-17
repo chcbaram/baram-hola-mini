@@ -44,8 +44,8 @@ target_link_libraries(${PRJ_NAME}
   )
 
 pico_add_extra_outputs(${PRJ_NAME})
-pico_enable_stdio_usb(${PRJ_NAME}  1)
-pico_enable_stdio_uart(${PRJ_NAME} 0)
+pico_enable_stdio_usb(${PRJ_NAME}  0)
+pico_enable_stdio_uart(${PRJ_NAME} 1)
 
 pico_generate_pio_header(${PRJ_NAME} ${CMAKE_CURRENT_LIST_DIR}/hw/driver/pio/ws2812.pio)
 

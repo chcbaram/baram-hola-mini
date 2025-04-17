@@ -13,6 +13,7 @@
 
 
 #include "pico/stdio/driver.h"
+#include "pico/bootrom.h"
 #include "hardware/uart.h"
 #include "hardware/gpio.h"
 #include "pico/multicore.h"

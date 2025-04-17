@@ -10,6 +10,7 @@ void apInit(void)
 {
   cliOpen(HW_UART_CH_CLI, 115200);
 
+  usbInit();
   multicore_launch_core1(apMain2);
 }
 
@@ -26,6 +27,7 @@ void apMain(void)
       ledToggle(_DEF_LED1);      
     } 
     cliMain();     
+    usbHidUpdate();
   }
 }
 
@@ -34,7 +36,6 @@ void apMain2(void)
   while(1)
   {
     keysUpdate();
-    usbHidUpdate();
     delay(1);
   }
 }

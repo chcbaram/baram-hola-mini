@@ -30,9 +30,13 @@ bool hwInit(void)
   eepromInit();
   ws2812Init();
   keysInit();
-  usbInit();
   
   logBoot(false);
 
+
+  if (keysGetPressed(0, 0))
+  {
+    reset_usb_boot(0,0);
+  }
   return true;
 }
