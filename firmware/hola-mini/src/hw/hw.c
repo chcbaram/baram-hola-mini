@@ -29,6 +29,7 @@ bool hwInit(void)
   i2cInit();
   eepromInit();
   ws2812Init();
+  keysInit();
   
   logBoot(false);
 

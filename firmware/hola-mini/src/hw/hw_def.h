@@ -9,6 +9,8 @@
 #define _DEF_BOARD_NAME           "HOLA-MINI"
 
 
+#define MATRIX_ROWS                 4
+#define MATRIX_COLS                 12
 
 
 #define _USE_HW_EEPROM
@@ -43,6 +45,9 @@
 
 #define _USE_HW_WS2812
 #define      HW_WS2812_MAX_CH       3
+
+#define _USE_HW_KEYS
+#define      HW_KEYS_PRESS_MAX      8
 
 
 //-- CLI

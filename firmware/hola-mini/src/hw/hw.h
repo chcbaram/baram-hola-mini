@@ -17,6 +17,8 @@
 #include "i2c.h"
 #include "eeprom.h"
 #include "ws2812.h"
+#include "keys.h"
+
 
 bool hwInit(void);
 
