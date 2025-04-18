@@ -1,4 +1,5 @@
 #include "ap.h"
+#include "qmk/qmk.h"
 
 
 static void apMain2(void);
@@ -12,6 +13,8 @@ void apInit(void)
 
   usbInit();
   multicore_launch_core1(apMain2);
+
+  qmkInit();
 }
 
 void apMain(void)
@@ -27,6 +30,7 @@ void apMain(void)
       ledToggle(_DEF_LED1);      
     } 
     cliMain();     
+    qmkUpdate();    
   }
 }
 
@@ -40,3 +44,7 @@ void apMain2(void)
   }
 }
 
+void cliLoopIdle(void)
+{
+  qmkUpdate();
+}

@@ -16,6 +16,7 @@
 #include "pico/bootrom.h"
 #include "hardware/uart.h"
 #include "hardware/gpio.h"
+#include "hardware/watchdog.h"
 #include "pico/multicore.h"
 
 

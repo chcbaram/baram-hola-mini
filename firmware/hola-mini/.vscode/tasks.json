@@ -23,10 +23,10 @@
       "label": "configure",
       "type": "shell",
       "osx":{
-        "command": "cmake -S . -B build -DPICO_BOARD=pico2 -DPICO_SDK_PATH=~/dev/pico/pico-sdk",
+        "command": "cmake -S . -B build -DPICO_BOARD=pico2 -DPICO_SDK_PATH=~/dev/pico/pico-sdk -DKEYBOARD_PATH='${config:keyboard_path}'",
       },
       "windows":{
-        "command": "cmake -S . -B build -G 'MinGW Makefiles' -DPICO_BOARD=pico2",
+        "command": "cmake -S . -B build -G 'MinGW Makefiles' -DPICO_BOARD=pico2 -DKEYBOARD_PATH='${config:keyboard_path}'",
       },
       "problemMatcher": []
     },  

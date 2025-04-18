@@ -37,7 +37,7 @@ bool ws2812Init(void)
   uint offset = pio_add_program(pio, &ws2812_program);
   ws2812_program_init(pio, 0, offset, ws2812_gpio, 800000, false);
 
-  ws2812Load();
+  ws2812Refresh();
 
   #ifdef _USE_HW_CLI
   cliAdd("ws2812", cliCmd);
@@ -55,7 +55,7 @@ bool ws2812SetColor(uint8_t ch, uint32_t rgb)
   return true;
 }
 
-bool ws2812Load(void)
+bool ws2812Refresh(void)
 {
   for (int i=0; i<ws2812.max_cnt; i++)
   {
@@ -83,7 +83,7 @@ void cliCmd(cli_args_t *args)
     rgb.rgb.b = args->getData(4);
 
     ws2812SetColor(ch, rgb.data);
-    ws2812Load();    
+    ws2812Refresh();    
     delay(1000);
 
     ret = true;
@@ -104,11 +104,11 @@ void cliCmd(cli_args_t *args)
     for (int i=0; i<3; i++)
     {
       ws2812SetColor(ch, rgb[i].data);
-      ws2812Load();
+      ws2812Refresh();
       delay(500);
     }
     ws2812SetColor(ch, 0);
-    ws2812Load();
+    ws2812Refresh();
 
     ret = true;
   }
@@ -130,18 +130,18 @@ void cliCmd(cli_args_t *args)
       {
         *p_color[index] = i;
         ws2812SetColor(ch, rgb.data);
-        ws2812Load();
+        ws2812Refresh();
         delay(2);
       }
       for (int i=0; i<=255; i++)
       {
         *p_color[index] = 255 - i;
         ws2812SetColor(ch, rgb.data);
-        ws2812Load();
+        ws2812Refresh();
         delay(2);
       }
       ws2812SetColor(ch, 0);
-      ws2812Load();
+      ws2812Refresh();
     }
 
     ret = true;

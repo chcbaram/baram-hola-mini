@@ -3,19 +3,12 @@
 
 
 #include "bsp.h"
+#include QMK_KEYMAP_CONFIG_H
 
 
-#define _DEF_FIRMWATRE_VERSION    "V250416R1"
+#define _DEF_FIRMWATRE_VERSION    "V250418R1"
 #define _DEF_BOARD_NAME           "HOLA-MINI"
 
-#define KBD_NAME                    "BARAM-HOLA-MINI"
-
-#define USB_VID                     0x0483
-#define USB_PID                     0x5230
-
-
-#define MATRIX_ROWS                 4
-#define MATRIX_COLS                 12
 
 
 #define _USE_HW_EEPROM
@@ -48,9 +41,6 @@
 
 #define _USE_HW_I2C
 #define      HW_I2C_MAX_CH          1
-
-#define _USE_HW_WS2812
-#define      HW_WS2812_MAX_CH       3
 
 #define _USE_HW_KEYS
 #define      HW_KEYS_PRESS_MAX      8

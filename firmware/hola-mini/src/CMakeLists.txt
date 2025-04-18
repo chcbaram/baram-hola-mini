@@ -1,11 +1,15 @@
+
+include(ap/modules/qmk/CMakeLists.txt)
+
+
 file(GLOB SRC_FILES 
+  ap/*.cpp
+  ap/*.c
   bsp/*.c
   hw/*.c
 )
 
 file(GLOB_RECURSE SRC_FILES_RECURSE
-  ap/*.cpp
-  ap/*.c
   common/*.c 
   hw/*.c
 )
@@ -17,10 +21,13 @@ add_executable(
 
   ${SRC_FILES}
   ${SRC_FILES_RECURSE}
+  ${QMK_SRC_FILES}
 )
 
 target_include_directories(${PRJ_NAME} PUBLIC 
+  .
   ap
+  ap/modules
   bsp
   common 
   common/core
@@ -28,6 +35,8 @@ target_include_directories(${PRJ_NAME} PUBLIC
   hw
   hw/driver/usb
   lib
+
+  ${QMK_INC_DIR}
 )
 
 target_link_libraries(${PRJ_NAME} 

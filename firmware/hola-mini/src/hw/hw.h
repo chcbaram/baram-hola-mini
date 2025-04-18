@@ -19,6 +19,7 @@
 #include "ws2812.h"
 #include "keys.h"
 #include "usb.h"
+#include "qbuffer.h"
 
 bool hwInit(void);
 

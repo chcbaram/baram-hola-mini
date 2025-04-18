@@ -13,8 +13,8 @@ extern "C" {
 #define WS2812_MAX_CH         HW_WS2812_MAX_CH
 
 
-
-#define WS2812_RGB(r,g,b)    ((uint32_t)(b)) | ((uint32_t)(r)<<8) | ((uint32_t)(g)<<16)
+#define WS2812_COLOR(r, g, b)   (((r)<<16) | ((g)<<8) | ((b)<<0))
+#define WS2812_RGB(r,g,b)       ((uint32_t)(b)) | ((uint32_t)(r)<<8) | ((uint32_t)(g)<<16)
 
 
 typedef struct
@@ -34,7 +34,7 @@ typedef union
 
 bool ws2812Init(void);
 bool ws2812SetColor(uint8_t ch, uint32_t rgb);
-bool ws2812Load(void);
+bool ws2812Refresh(void);
 
 
 #endif
